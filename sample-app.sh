@@ -1,6 +1,18 @@
 #!/bin/bash
 set -euo pipefail
 
+# Check if the directory exists
+if [ -d "tempdir" ]; then
+    echo "Directory 'tempdir' already exists. Removing it."
+    rm -rf tempdir
+fi
+
+# Ensure the directory is removed before proceeding
+if [ -d "tempdir" ]; then
+    echo "Failed to remove 'tempdir'. Exiting."
+    exit 1
+fi
+
 mkdir tempdir
 mkdir tempdir/templates
 mkdir tempdir/static
